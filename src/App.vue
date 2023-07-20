@@ -1,6 +1,7 @@
 <script setup>
 import HelloPaimon from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+import iLoveWomen from './components/test.vue'
 </script>
 
 <template>
@@ -8,12 +9,13 @@ import TheWelcome from './components/TheWelcome.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloPaimon message="fuck you" />
+      <HelloPaimon msg="Fuck You" class="welcome_message" />
+      <iLoveWomen header2="(I love women)"/>
     </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <test/>
   </main>
 </template>
 

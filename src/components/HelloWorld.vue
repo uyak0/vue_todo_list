@@ -1,43 +1,40 @@
-<!-- <script setup>
+<script setup>
 defineProps({
   msg: {
     type: String,
     required: true
   }
 })
-</script> -->
+</script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ message }}</h1>
-    <h2 class="green">{{ test }}</h2>
+    <h1 class="green">{{ msg }}</h1>
     <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+      
     </h3>
   </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
   name: "HelloPaimon",
   props: ['message'],
 
-  setup(props) {
-    let test = 'cunny';
-    if (props.message == 'fuck you') {
-      console.log('oooooh')
-    } else {
-      test = 'lol';
-    }
+  // setup(props) {
+  //   let test = 'cunny';
+  //   if (props.message == 'fuck you') {
+  //     console.log('oooooh')
+  //   } else {
+  //     test = 'lol';
+  //   }
 
-    return {
-      test
-    }
-  }
+  //   return {
+  //     test
+  //   }
+  // }
 }
-</script>
+</script> -->
 
 <style scoped>
 h1 {
