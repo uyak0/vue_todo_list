@@ -1,49 +1,24 @@
-<script setup>
-import HelloPaimon from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import iLoveWomen from './components/test.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloPaimon msg="Fuck You" class="welcome_message" />
-      <iLoveWomen header2="(I love women)"/>
-    </div>
-  </header>
-
-  <main>
-    <test/>
-  </main>
+  <div class="welcome_msg">
+    <h1 class="title">Hello</h1>
+    <h3 class="subtitle">This is your to-do list</h3>
+  </div>  
+  <input type="checkbox"> 
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+<style>
+  /* welcome messages */
+  .welcome_msg {
+    padding-right: 150px;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  .title {
+    font-weight: 500;
+    color: lightgreen;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .subtitle {
+    position: relative;
   }
-}
+  /*-------*/
+
+
 </style>
