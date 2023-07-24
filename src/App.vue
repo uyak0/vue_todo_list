@@ -48,6 +48,6 @@ import axios from 'axios';
       .then(res => this.todos = res.data)
       .catch(err => console.log(err));
     }
-  }
+  } //test
 </script>
 
