@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Header from './components/icons/Header.vue';
-import Todos from './components/icons/Todos.vue';
-import AddTodo from './components/icons/AddTodo.vue';
+import Header from './components/Header.vue';
+import Todos from './components/Todos.vue';
+import AddTodo from './components/AddTodo.vue';
 import axios from 'axios';
 
   export default {

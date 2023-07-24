@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-bind:key="todo.id" v-for="todo in todos">
-            <TodoItem v-bind:todo="todo" @del-todo="$emit('del-todo', todo.id)"/>
+        <div v-bind:key="todo.id" v-for="todo in todos"> <!-- for loop with todo.id -->
+            <TodoItem v-bind:todo="todo" @del-todo="$emit('del-todo', todo.id)"/> <!-- emit 'del-todo', passing parameter todo.id -->
         </div>
     </div>
 </template>
