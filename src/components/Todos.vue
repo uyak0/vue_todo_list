@@ -17,7 +17,3 @@ export default {
     props: ["todos"]
 }
 </script>
-
-<style scoped>
-
-</style>
