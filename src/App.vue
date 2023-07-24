@@ -1,65 +1,53 @@
-<script setup>
-  import { ref } from 'vue'
-
-  const new_todo = ref('')
-  
-</script>
-
 <template>
-  <div class="welcome_msg">
-    <h1 class="title">Hello</h1>
-    <h3 class="subtitle">This is your to-do list</h3>
-  </div>  
-  <input v-model="new_todo" placeholder="Type your new to-do" id="new_todo_text"/>
-  <button @click=""> New To-Do </button>
-  <div class="toDoItems">
-    <input type="checkbox"/><p class="todoText"> {{ new_todo }} </p>
+  <div id="app">
+    <Header/>
+    <AddTodo v-on:add-todo="addTodo"/>
+    <Todos v-bind:todos="todos" @del-todo="deleteTodo"/>
   </div>
 </template>
 
-<style scoped>
-  /* welcome messages */
-  .welcome_msg {
-    padding-right: 150px;
-  }
-  .title {
-    font-weight: 500;
-    color: lightgreen;
-  }
-  .subtitle {
-    position: relative;
-  }
-  /*-------*/
+<script>
+import Header from './components/icons/Header.vue';
+import Todos from './components/icons/Todos.vue';
+import AddTodo from './components/icons/AddTodo.vue';
+import axios from 'axios';
 
-  /* todo items */
-  .toDoItems {
-    display: block;
-    margin-top: 5%;
-    border-style: solid;
-    border-radius: 0.1px;
-    border-color: grey;
-  }
-  .todoText {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    margin-right: 14.5rem;
-  }
-  input[type=checkbox] {
-    margin-top: 6.5px;
-    margin-left: 1.5%;
-  }
+  export default {
+    name: 'app',
+    components: {
+      AddTodo,
+      Header,
+      Todos
+    },
 
-  #new_todo_text {
-    background-color: darkslategrey;
-    color:rgb(156, 156, 156);
+    data() {
+      return {
+        todos: []
+      }
+    },
+
+    methods: {
+      deleteTodo(id) {
+        axios.delete('https://jsonplaceholder.typicode.com/todos/${id}')
+        .then(res => this.todos = this.todos.filter(todo => todo.id !== id))
+        .catch(err => console.log(err));
+      },
+
+      addTodo(newTodo) {
+        const { title, completed } = newTodo;
+        axios.post('https://jsonplaceholder.typicode.com/todos', { 
+          title,
+          completed
+        })
+        .then(res => this.todos = [...this.todos, res.data])
+        .catch(err => console.log(err));
+      }
+    },
+    created() {
+      axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5') //usually should be backend
+      .then(res => this.todos = res.data)
+      .catch(err => console.log(err));
+    }
   }
+</script>
 
-  #new_todo_text:focus {
-    outline: none;
-  }
-
-  
-
-  /* ----------- */
-
-</style>
