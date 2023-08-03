@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webpack_loader'
+    'djangoapp',
+    'todo_app',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +53,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
+# CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'djangoapp.urls'
 
@@ -57,7 +67,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            str(BASE_DIR.joinpath('templates'))
+            BASE_DIR / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -129,8 +139,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WEBPACK_LOADER = {
   'DEFAULT': {
     'CACHE': not DEBUG,
-    'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    'STATS_FILE': BASE_DIR / 'webpack-stats.json',
     'POLL_INTERVAL': 0.1,
     'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
   }
+}
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+     'DEFAULT_AUTHENTICATION_CLASS': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }

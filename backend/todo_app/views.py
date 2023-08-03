@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import TodoItems
+from rest_framework.viewsets import ModelViewSet
+from .serializers import TodoItemSerializer
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html')
+class TodoItemViewSet(ModelViewSet):
+    queryset = TodoItems.objects.all()
+    serializer_class = TodoItemSerializer

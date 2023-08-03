@@ -9,12 +9,23 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: "TodoItem",
     props: ["todo"],
 
     methods: {
-        markComplete() {
+        markComplete(id) {
+        axios.post('http://127.0.0.1:8000/api/todo_app/' + id + '/', {
+            completed: true
+        },
+        {
+            auth: { //simple auth
+                username: 'uyako',
+                password: 'bryan1234'
+          }
+        })
             this.todo.completed = !this.todo.completed;
         }
     }
